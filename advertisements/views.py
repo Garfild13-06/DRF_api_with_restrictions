@@ -2,6 +2,7 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.viewsets import ModelViewSet
 
+from advertisements.filters import AdvertisementFilter
 from advertisements.models import Advertisement
 from advertisements.permissions import IsOwnerOrReadOnly
 from advertisements.serializers import AdvertisementSerializer
@@ -13,6 +14,8 @@ class AdvertisementViewSet(ModelViewSet):
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
     filter_backends = [OrderingFilter]
+    user_filter=AdvertisementFilter()
+
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
     ordering_fields = ['status']
 
