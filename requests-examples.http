@@ -2,6 +2,8 @@
 
 @baseUrl = https://localhost:8000/api
 
+
+
 # получение объявлений
 GET {{baseUrl}}/advertisements/
 Content-Type: application/json
