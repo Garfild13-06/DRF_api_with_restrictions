@@ -14,7 +14,6 @@ class AdvertisementViewSet(ModelViewSet):
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
     filter_backends = [OrderingFilter]
-    user_filter=AdvertisementFilter()
 
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
     ordering_fields = ['status']
