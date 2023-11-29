@@ -8,6 +8,7 @@ class IsOwnerOrReadOnly(BasePermission):
         if request.method == 'GET':
             return True
         # разрешаем админу все действия
-        if request.user.username == 'admin':
+        if request.user.is_staff:
+        # if request.user.username == 'admin':
             return True
         return request.user.id == obj.creator.id

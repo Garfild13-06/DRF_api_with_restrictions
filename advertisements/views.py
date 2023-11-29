@@ -1,5 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.viewsets import ModelViewSet
 
@@ -24,6 +25,6 @@ class AdvertisementViewSet(ModelViewSet):
         """Получение прав для действий."""
         # print(self.action)
         if self.action in ["create", "update", "partial_update", "destroy"]:
-            return [IsOwnerOrReadOnly()]
+            return [IsOwnerOrReadOnly(), IsAuthenticated()]
 
         return []

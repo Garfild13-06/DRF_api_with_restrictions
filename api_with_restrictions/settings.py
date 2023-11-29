@@ -74,11 +74,7 @@ TEMPLATES = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'user': '20/minute',
-        'anon': '10/minute'
-    }
+    ]
 }
 
 WSGI_APPLICATION = 'api_with_restrictions.wsgi.application'
